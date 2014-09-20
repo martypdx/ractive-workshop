@@ -22,6 +22,10 @@ The most basic binding is to an `<input>` control, which uses the `value` attrib
 
 ```
 
+### Type A? Be lazy
+
+The option `lazy: true` prevents binding on every keystroke
+
 ### Lab
 
 1. Create a WYSIWYG editor that manipulates the style attributes of a div.

@@ -22,6 +22,14 @@ Can be used inside mustache references:
 
 ```
 
+### Keypath Expressions
+
+```html
+
+{{# planets[selected] }}
+
+```
+
 ### Data Functions
 
 Functions specified in the data can be accessed in the template:
@@ -40,7 +48,19 @@ new Ractive({
 		}
 	}
 })
+
 ```
+
+Functions auto-update.
+
+### Computed Properties
+
+Intensive or repetative expressions can be encapsulated
+in computed properties. Functions expressed as properties
+
+Refer to: http://docs.ractivejs.org/latest/computed-properties
+
+
 ### Functions on data objects
 
 ```html
@@ -65,7 +85,7 @@ new Ractive({
 ### Lab
 1. Go to http://beta.json-generator.com/ and generate some data, cut and paste as inline variable.
 2. Use expressions and references. Modify the data as needed
-3. Other libraries
+3. Create some computed properties
 
 
 

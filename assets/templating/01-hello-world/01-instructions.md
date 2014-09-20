@@ -19,6 +19,11 @@ new Ractive({
 })
 ```
 
+### `append` option
+
+The config option `append: true` will retain the existing el content and append the rendered template. If `append` refers to a node, content will
+be inserted before the "anchor" node.
+
 ## Lab
 
 1. Make sure `01-lab.html` runs and renders in the browser.

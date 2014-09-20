@@ -1,26 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Hello World - RactiveJS Workshop</title>
+	<title>RactiveJS Workshop</title>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
 
 	<link rel="stylesheet" type="text/css" href="../../css/style.css">
 	<script src='../../js/ractive.js'></script>
+	<script src='../../data/planets.js'></script>
 	<script src='https://code.jquery.com/jquery-2.1.1.min.js'></script>
 
 </head>
 <body>
 
 <script id='template' type='text/ractive'>
-
+	{{#planets}}
+		{{planet}}
+		<img src='../../images/planets/{{planet}}.png'>
+	{{/}}
 </script>
 
 <script>
-new Ractive({
+
+var ractive = new Ractive({
 	el: document.body,
-	template: '#template'
+	template: '#template',
+	data: {
+	    format: function( number ){
+	      return Intl.NumberFormat().format(number);
+    	},
+    	planets: planets
+    }
 })
+
 </script>
 
 <body>
