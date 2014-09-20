@@ -14,7 +14,7 @@ var mdcss = '<link rel="stylesheet" type="text/css" href="../../css/style.css">\
 			}),
 	allelse = assets.exclude('**/*.md')
 
-module.exports = gobble([markdown, allelse, components])
+module.exports = gobble([markdown, allelse])
 
 // var components = gobble( 'assets/G-and-beyond/ractive_components' )
 // module.exports = gobble([
