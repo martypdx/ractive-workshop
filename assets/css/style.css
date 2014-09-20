@@ -1,0 +1,54 @@
+@import url(http://fonts.googleapis.com/css?family=Raleway:500,300,700);
+
+/* base CSS */
+* {
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+/*
+html, body {
+  padding: 0;
+  margin: 0;
+}
+*/
+
+body {
+  color: #325050;
+  background: rgb(245, 240, 235);
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+  padding: 10px;
+}
+
+h1, h2 {
+	font-weight: 700
+}
+h3, h4, h5 {
+	font-weight: 500
+}
+
+a {
+  color: #0d8ba1;
+  -webkit-transition: all 0.25s ease-out;
+  -moz-transition: all 0.25s ease-out;
+  transition: all 0.25s ease-out;
+  text-decoration: none;
+}
+  a:visited {
+    color: rgb(27, 156, 142);
+  }
+  a:hover, a:focus {
+    color: #0599c2;
+    text-decoration: underline;
+  }
+
+p {
+  margin: 0.75em 0;
+  line-height: 2;
+}
+
+li {
+  margin-bottom: 10px;
+}

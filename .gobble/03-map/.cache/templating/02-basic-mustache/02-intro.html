@@ -1,0 +1,12 @@
+<link rel="stylesheet" type="text/css" href="../../css/style.css">
+<link rel="stylesheet" type="text/css" href="../../css/tomorrow.css">
+<h1 id="intro-01-hello-world">Intro: 01 Hello World</h1>
+<p>At its core, RactiveJS renders an html template into the DOM and a specified location:</p>
+<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Hello World<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+</code></pre>
+<h2 id="-">+</h2>
+<pre><code class="hljs lang-javascript"><span class="hljs-keyword">new</span> Ractive({
+    el: <span class="hljs-built_in">document</span>.body,
+    template: <span class="hljs-string">'#template'</span>
+})
+</code></pre>

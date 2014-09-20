@@ -1,0 +1,17 @@
+var gobble = require('gobble'),
+	marked = require('./gobble/gobble-marked')
+
+
+var assets = gobble('assets')
+
+var mdcss = '<link rel="stylesheet" type="text/css" href="../../css/style.css">\n' +
+			'<link rel="stylesheet" type="text/css" href="../../css/tomorrow.css">\n'
+
+	markdown = assets.include('**/*.md')
+			.map(marked)
+			.map(function(code){
+				return mdcss + code
+			}),
+	allelse = assets.exclude('**/*.md')
+
+module.exports = gobble([markdown, allelse])

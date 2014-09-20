@@ -1,0 +1,61 @@
+<h1 id="03-chip-off-the-block">03 Chip Off the Block</h1>
+<h2 id="intro">Intro</h2>
+<p>There are four types of block sections:</p>
+<ol>
+<li>List</li>
+<li>Context</li>
+<li>Conditional</li>
+<li>Inverted Conditional</li>
+</ol>
+<p>Traditional mustache blocks are implicit, handlebars style is explicit. Ractive supports both. #1 and #3 support <code>{{else}}</code> (issue for #2)</p>
+<h3 id="list">List</h3>
+<pre><code class="hljs lang-html">{{#items}}
+
+{{/}} <span class="hljs-comment">&lt;!--closing tag optional--&gt;</span>
+
+{{#each items}}
+
+{{/each}} <span class="hljs-comment">&lt;!--closing tag REQUIRED--&gt;</span>
+</code></pre>
+<h3 id="context">Context</h3>
+<pre><code class="hljs lang-html">{{#person}}
+    {{name}} //person.name
+{{/}}
+
+{{#with person}}
+    {{name}} //person.name
+{{/with}}
+</code></pre>
+<h3 id="conditional">Conditional</h3>
+<pre><code class="hljs lang-html">{{#active}}
+
+{{/}}
+
+{{#if active}}
+
+{{/if}}
+</code></pre>
+<h3 id="inverted-conditional-not-">Inverted Conditional (&quot;not&quot;)</h3>
+<pre><code class="hljs lang-html">{{^active}}
+
+{{/}}
+
+{{#unless active}}
+
+{{/unless}}
+</code></pre>
+<h2 id="lab">Lab</h2>
+<ol>
+<li>Go to <a href="http://beta.json-generator.com/">http://beta.json-generator.com/</a> and generate some data, cut and paste as inline variable.</li>
+<li>Create a report using all 4 types of blocks. (hint: <code>{{.}}</code> or <code>{{this}}</code> refers to the current context)</li>
+<li>Create a conditional &quot;loading&quot; section and simulate async data with the following:</li>
+</ol>
+<pre><code class="hljs lang-js"><span class="hljs-keyword">var</span> ractive = <span class="hljs-keyword">new</span> Ractive({
+    el: <span class="hljs-built_in">document</span>.body,
+    template: <span class="hljs-string">'#template'</span>
+})
+
+setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
+    ractive.set(<span class="hljs-string">'root'</span>, yourData)
+}, <span class="hljs-number">3000</span>)
+</code></pre>
