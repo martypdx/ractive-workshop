@@ -1,4 +1,4 @@
-# 13 Putting it together
+# 13 Master Detail
 
 Master-detail views are a common design problem
 

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>RactiveJS Workshop</title>
+	<link rel="stylesheet" type="text/css" href="../../css/todo.css">
+	<script src='../../js/ractive.js'></script>
+	<script src='https://code.jquery.com/jquery-2.1.1.min.js'></script>
+
+</head>
+<body>
+<section id="todoapp"></section>
+
+<script id='template' type='text/ractive'>
+
+	<header id="header">
+		<h1>todos</h1>
+		<input id="new-todo" placeholder="What needs to be done?" autofocus>
+	</header>
+
+	<section id="main">
+		<input id="toggle-all" type="checkbox">
+		<label for="toggle-all">Mark all as complete</label>
+
+		<ul id="todo-list">
+			<li class="">
+				<div class="view">
+					<input class="toggle" type="checkbox" checked="">
+					<label></label>
+					<button class="destroy"></button>
+				</div>
+
+			</li>
+		</ul>
+	</section>
+
+	<footer id="footer">
+		<span id="todo-count">
+			<strong></strong> left
+		</span>
+
+		<ul id="filters">
+			<li>
+				<a class="" href="#/">All</a>
+			</li>
+			<li>
+				<a class="" href="#/active">Active</a>
+			</li>
+			<li>
+				<a class="" href="#/completed">Completed</a>
+			</li>
+		</ul>
+
+		<button id="clear-completed" on-click="clearCompleted">
+			Clear completed ( )
+		</button>
+	</footer>
+</script>
+
+<script>
+
+
+var ractive = new Ractive({
+	el: '#todoapp',
+	template: '#template',
+	data: {
+    }
+})
+
+
+
+function getFilter(){
+	var filter =  location.hash.replace('#/','')
+	console.log('filter is now', filter || 'all')
+}
+
+getFilter()
+
+window.onhashchange = getFilter
+
+</script>
+
+<body>
