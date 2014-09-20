@@ -1,0 +1,29 @@
+<p class='greeting'> {{greeting}} {{person}}</p>
+<p>reply: <input value='{{reply}}'></p>
+
+<style>
+
+.greeting {
+	font-size: 36pt;
+	color: green;
+}
+
+</style>
+
+<script>
+
+component.exports = {
+	data: {
+		greeting: 'hullo',
+		person: 'epicodus'
+	},
+	lazy: true,
+	init: function(){
+		this.observe('reply', function(n,o){
+			alert('well ' + n + ' back to you!')
+		}, { init: false})
+	}
+}
+
+</script>
+

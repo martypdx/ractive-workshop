@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>RactiveJS Workshop</title>
+
+	<script src='require.js'></script>
+
+</head>
+
+<body>
+	<main></main>
+
+<script>
+	require([ 'greeting' ], function ( Greeting ) {
+
+		var ractive = new Greeting({
+			el: 'main',
+		})
+
+		// ractive = new Ractive({
+		// 	el: 'main',
+		// 	template: 'hello {{foo}}',
+		// 	data: {
+		// 		foo: 'world'
+		// 	}
+		// });
+	});
+</script>
+
+<body>
+
+

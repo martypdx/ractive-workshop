@@ -1,0 +1,22 @@
+<p> another component
+
+<style>
+
+.very-style {
+	color: green;
+}
+
+</style>
+
+<script>
+
+component.exports = {
+	init: function(){
+		this.on('select', function(e){
+			console.log('selected!')
+		})
+	}
+}
+
+</script>
+
