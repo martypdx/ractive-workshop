@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>RactiveJS Workshop</title>
+
+	<link rel="stylesheet" type="text/css" href="../../css/style.css">
+	<script src='../../js/ractive.js'></script>
+	<script src='../../js/ractive-load.js'></script>
+
+	<!--
+	<link rel='ractive' href='greeting.html'>
+	-->
+
+
+</head>
+
+<body>
+
+<script>
+Ractive.load('greeting.html').then(function(Greeting){
+	new Greeting({
+		el: document.body
+	})
+})
+</script>
+
+<body>

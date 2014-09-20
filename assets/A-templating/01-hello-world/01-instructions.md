@@ -19,8 +19,6 @@ new Ractive({
 })
 ```
 
-### `append` option
-
 The config option `append: true` will retain the existing el content and append the rendered template. If `append` refers to a node, content will
 be inserted before the "anchor" node.
 
@@ -37,6 +35,7 @@ be inserted before the "anchor" node.
 	<p class='third'></p>
 </div>
 ```
-4. Create two seperate ractive instances that render different templates to two different nodes
-5. Try an inline template instead of an element selector
+4. Render into the list after the first `<p>`
+5. Create two seperate ractive instances that render different templates to two different nodes
+6. Try an inline template instead of an element selector
 
