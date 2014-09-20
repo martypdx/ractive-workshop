@@ -65,7 +65,7 @@ ractive.fire()
 ### Writing your own custom event plugin
 
 ```js
-Ractive.events.myevent = function ( node, fire ) {
+var myevent = function ( node, fire ) {
 
 	function fireEvent(e){
 		fire({
@@ -81,11 +81,24 @@ Ractive.events.myevent = function ( node, fire ) {
 	    }
 	}
 }
+
+var ractive = new Ractive({
+	events: {
+		myevent: myevent
+	}
+})
+
+// globally
+Ractive.events.myevent = myevent
+
 ```
+
+
 
 ## Lab
 
 1. Create Add and Substract buttons that control a data value
 2. Add ability to turn off Add and Substract buttons.
+3. Explore context in a list
 
-3. Bonus: create an event plugin
+4. Bonus: create an event plugin

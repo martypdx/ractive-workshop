@@ -6,31 +6,19 @@
 
 	<link rel="stylesheet" type="text/css" href="../../css/style.css">
 	<script src='../../js/ractive.js'></script>
-	<script src='../../data/angelnames.js'></script>
 	<script src='https://code.jquery.com/jquery-2.1.1.min.js'></script>
 
 </head>
 <body>
 
 <script id='template' type='text/ractive'>
-	<ul>
-		{{#each angels}}
-		<li>{{.}}</li>
-		{{/each}}
-	</ul>
-
-	{{#each pets}} {{.}} {{else}} no pets :( {{/each}}
 
 </script>
 
 <script>
-new Ractive({
+var ractive = new Ractive({
 	el: document.body,
-	template: '#template',
-	data: {
-		angels: angelNames,
-		pets: []
-	}
+	template: '#template'
 })
 </script>
 

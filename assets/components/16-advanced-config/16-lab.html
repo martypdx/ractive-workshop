@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>RactiveJS Workshop</title>
+
+	<link rel="stylesheet" type="text/css" href="../../css/style.css">
+	<script src='../../js/ractive.js'></script>
+	<script src='../../data/planets.js'></script>
+	<script src='https://code.jquery.com/jquery-2.1.1.min.js'></script>
+
+</head>
+<body>
+
+<script id='template' type='text/ractive'>
+	<p>view: {{view}}</p>
+	<ul>
+		{{#items}}
+		<li>{{name}}</li>
+		{{/}}
+	</ul>
+</script>
+
+<script>
+var ractive = new Ractive({
+	el: document.body,
+	template: '#template',
+	data: {
+		items: [
+			{ id: 1, name: 'foo' },
+			{ id: 2, name: 'bar' },
+			{ id: 3, name: 'bop' },
+		]
+	}
+})
+
+
+function load(){
+	var hash = location.hash.replace('#/','').split('/'),
+		view = hash[0] ? hash[0] : ''
+		id = hash[1] ? hash[1] : 0
+
+	ractive.reset({ view: view, id: id, items: ractive.get('items') })
+}
+
+load()
+
+window.onhashchange = load
+
+</script>
+
+<body>

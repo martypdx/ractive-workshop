@@ -16,4 +16,4 @@ Value is rendered and then is never updated.
 
 ## Lab
 
-1. Explore binding behavior
+1. Using a previos lab, explore binding behavior

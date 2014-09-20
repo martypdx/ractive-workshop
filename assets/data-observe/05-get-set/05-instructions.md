@@ -83,3 +83,4 @@ ractive.observe('foo', function(n,o,k){
 ```
 
 5. Try "upstream" and "downstream" changes
+6. Go back to frankendiv lab and try `ractive.animate` instead of `ractive.set`
