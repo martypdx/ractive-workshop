@@ -12,14 +12,24 @@
 <body>
 
 <script id='template' type='text/ractive'>
-
+<p> im the parent</p>
+<widget>
+<p on-click='select'>back in the parent</p>
+</widget>
 </script>
 
 <script>
+var Widget = Ractive.extend({
+	template: '<div><p>in the component</p>{{yield}}</div>'
+})
 var ractive = new Ractive({
 	el: document.body,
-	template: '#template'
+	template: '#template',
+	components: {
+		widget: Widget
+	}
 })
+
 </script>
 
 <body>

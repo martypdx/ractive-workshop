@@ -7,31 +7,47 @@
 	<link rel="stylesheet" type="text/css" href="../../css/style.css">
 	<script src='../../js/ractive.js'></script>
 	<script src='../../data/angelnames.js'></script>
-	<script src='https://code.jquery.com/jquery-2.1.1.min.js'></script>
+	<script src='../../data/mydata.js'></script>
+	<style>
+	.box {
+		display: inline-block;
+		height: 100px; width: 100px;
+		border: 1px solid blue;
+	}
+	.active {
+		background: red;
+	}
+	</style>
 
 </head>
 <body>
 
 <script id='template' type='text/ractive'>
-	<ul>
-		{{#each angels}}
-		<li>{{.}}</li>
-		{{/each}}
-	</ul>
 
-	{{#each pets}} {{.}} {{else}} no pets :( {{/each}}
+	{{#each mydata}}
 
+		<p>{{#name}}{{first}}{{last}}{{/}}</p>
+		<p>{{company}}</p>
+		<p>&gt;{{#tags}}<span>{{.}}, </span>
+		{{/}}</p>
+	{{else}}
+	loading...
+	{{/each}}
 </script>
 
 <script>
-new Ractive({
+window.ractive = new Ractive({
 	el: document.body,
 	template: '#template',
 	data: {
-		angels: angelNames,
-		pets: []
+		mydata: null
 	}
 })
+
+setTimeout(function(){
+    ractive.set('mydata', mydata)
+}, 1000)
+
 </script>
 
 <body>

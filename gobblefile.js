@@ -1,4 +1,4 @@
-var gobble = require('gobble') //,
+var gobble = require('gobble'),
 	marked = require('./gobble/gobble-marked')
 
 

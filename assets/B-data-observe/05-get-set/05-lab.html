@@ -13,13 +13,34 @@
 
 <script id='template' type='text/ractive'>
 
+{{#items}}
+{{name}} {{number}}<br>
+{{/}}
 </script>
 
 <script>
-new Ractive({
+var ractive = new Ractive({
 	el: document.body,
-	template: '#template'
+	template: '#template',
+	data:{
+		person: {
+			first: 'sally',
+			last: 'smith'
+		},
+		items: [
+			{ name: 'portland', number: 100 },
+			{ name: 'seattle', number: 200 },
+			{ name: 'tokyo', number: 100 }
+		]
+	}
 })
+ractive.observe('items.*.name', function(newValue, oldValue, keypath, index){
+	console.log(keypath, 'changed from', oldValue, 'to', newValue, 'index was', index)
+}, { init: false })
+ractive.splice('items', 1, 1, { name: 'eugene' })
+ractive.animate('items.0', { name: 'pdx', number: 10000 })
+
+
 </script>
 
 <body>
