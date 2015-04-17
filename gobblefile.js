@@ -8,8 +8,8 @@ var mdcss = '<link rel="stylesheet" type="text/css" href="../../css/style.css">\
 			'<link rel="stylesheet" type="text/css" href="../../css/tomorrow.css">\n'
 
 	markdown = assets.include('**/*.md')
-			.map(marked)
-			.map(function(code){
+			.transform(marked)
+			.transform(function(code){
 				return mdcss + code
 			}),
 	allelse = assets.exclude('**/*.md')
