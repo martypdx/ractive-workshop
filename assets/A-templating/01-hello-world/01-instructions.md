@@ -1,6 +1,6 @@
 # 01 Hello World
 
-## Intro
+## Intro, really hi there?
 
 At its core, RactiveJS interpolates data into an html template and renders into the DOM and a specified location:
 

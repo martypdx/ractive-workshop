@@ -19,7 +19,7 @@
 
 	{{#with parent}}
 		{{#each children}}
-			<p>{{name}} is a child of {{../../name}}</p>
+			<p>{{.name}} is a child of {{../../name}}</p>
 		{{/each}}
 	{{/with}}
 </script>

@@ -6,17 +6,58 @@
 
 	<link rel="stylesheet" type="text/css" href="../../css/style.css">
 	<script src='../../js/ractive.js'></script>
-	<script src='https://code.jquery.com/jquery-2.1.1.min.js'></script>
 
 </head>
 <body>
 
 <script id='template' type='text/ractive'>
-{{JSON.stringify(root)}}
+
+<ul>
+{{>folder root}}
+</ul>
+
+<!-- {{>folder}} -->
+	{{#each .files}}
+	<li>{{.filename}}
+		<ul>
+		{{>folder}}
+		</ul>
+	</li>
+	{{/each}}
+<!-- {{/folder}} -->
+
+
+{{#sorted.root}}
+{{>item}}
+{{/}}
+
+<!-- {{>item}} -->
+<li>{{name}}
+	<ul>
+	{{#sorted[id]}}
+	{{>item}}
+	{{/}}
+	</ul>
+</li>
+<!-- {{/item}} -->
+
 </script>
 
 <script>
-
+var keyedData = [
+	{ id: 1, parent: null, name: 'I am 1 and have no parent' },
+	{ id: 2, parent: 1, name: 'I am 2 and 1 is my parent' },
+	{ id: 3, parent: 1, name: 'I am 3 and 1 is my parent' },
+	{ id: 4, parent: 2, name: 'I am 4 and 2 is my parent' },
+	{ id: 5, parent: 2, name: 'I am 5 and 2 is my parent' },
+	{ id: 6, parent: 4, name: 'I am 6 and 4 is my parent' },
+	{ id: 7, parent: 4, name: 'I am 7 and 4 is my parent' },
+	{ id: 8, parent: 7, name: 'I am 8 and 7 is my parent' },
+	{ id: 9, parent: 3, name: 'I am 9 and 3 is my parent' },
+	{ id: 10, parent: 9, name: 'I am 10 and 9 is my parent' },
+	{ id: 11, parent: 1, name: 'I am 11 and 1 is my parent' },
+	{ id: 12, parent: 11, name: 'I am 12 and 11 is my parent' },
+]
 var ractive = new Ractive({
 	el: document.body,
 	template: '#template',
@@ -32,24 +73,23 @@ var ractive = new Ractive({
 		          ]}
 		        ]}
 		    ]
+		},
+		keyedData: keyedData
+	},
+	computed: {
+		sorted: function(){
+			console.log(this.get('keyedData'))
+			return this.get('keyedData').reduce(function(buckets, each){
+				var parent = each.parent || 'root'
+				if(!buckets[parent]) { buckets[parent] = [] }
+				buckets[parent].push(each)
+				return buckets
+			}, {})
 		}
 	}
 })
 
-var keyedData = [
-	{ id: 1, parent: null, name: 'I am 1 and have no parent' },
-	{ id: 2, parent: 1, name: 'I am 2 and 1 is my parent' },
-	{ id: 3, parent: 1, name: 'I am 3 and 1 is my parent' },
-	{ id: 4, parent: 2, name: 'I am 4 and 2 is my parent' },
-	{ id: 5, parent: 2, name: 'I am 5 and 2 is my parent' },
-	{ id: 6, parent: 4, name: 'I am 6 and 4 is my parent' },
-	{ id: 7, parent: 4, name: 'I am 7 and 4 is my parent' },
-	{ id: 8, parent: 7, name: 'I am 8 and 7 is my parent' },
-	{ id: 9, parent: 3, name: 'I am 9 and 3 is my parent' },
-	{ id: 10, parent: 9, name: 'I am 10 and 9 is my parent' },
-	{ id: 11, parent: 1, name: 'I am 11 and 1 is my parent' },
-	{ id: 12, parent: 11, name: 'I am 12 and 11 is my parent' },
-]
+
 
 </script>
 

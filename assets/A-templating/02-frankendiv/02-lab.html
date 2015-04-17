@@ -6,12 +6,10 @@
 
 	<link rel="stylesheet" type="text/css" href="../../css/style.css">
 	<script src='../../js/ractive.js'></script>
-	<script src='https://code.jquery.com/jquery-2.1.1.min.js'></script>
 
 	<style>
 		#frankendiv {
 			display: inline-block;
-			height: 100px; width: 100px;
 			border: 1px solid steelblue;
 		}
 	</style>
@@ -19,13 +17,32 @@
 <body>
 
 <script id='template' type='text/ractive'>
-	<div id='frankendiv'></div>
+	<br>
+	<input type='range' min='10' max='300' step='10' value='{{size}}'>
+	<input type='color' value='{{color}}'>
+	<input value='{{content}}'>
+	<input type='color' value='{{shadowColor}}'>
+	<input type='range' min='0' max='30' step='1' value='{{offsetX}}'>
+	<input type='range' min='0' max='30' step='1' value='{{offsetY}}'>
+	<input type='range' min='0' max='30' step='1' value='{{blur}}'>
+	<br>
+	<div style='
+		height: {{size}}px; width: {{size}}px;
+		background-color: {{color}};
+		text-shadow: {{shadowColor}} {{offsetX}}px {{offsetY}}px {{blur}}px;'
+
+		id='frankendiv'>{{content}}</div>
 </script>
 
 <script>
 new Ractive({
 	el: document.body,
-	template: '#template'
+	template: '#template',
+	data: {
+		size: 100,
+		color: '#FFFFFF',
+		content: 'shadow me'
+	}
 })
 </script>
 

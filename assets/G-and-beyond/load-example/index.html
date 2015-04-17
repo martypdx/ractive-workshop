@@ -8,9 +8,8 @@
 	<script src='../../js/ractive.js'></script>
 	<script src='../../js/ractive-load.js'></script>
 
-	<!--
-	<link rel='ractive' href='greeting.html'>
-	-->
+	<link rel='ractive' href='greeting'>
+
 
 
 </head>
@@ -18,8 +17,8 @@
 <body>
 
 <script>
-Ractive.load('greeting.html').then(function(Greeting){
-	new Greeting({
+Ractive.load().then(function(Greeting){
+	new Ractive.components.Greeting({
 		el: document.body
 	})
 })
