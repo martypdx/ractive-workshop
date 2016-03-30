@@ -19,17 +19,33 @@
 <script id='template' type='text/ractive'>
 	<br>
 	<input type='range' min='10' max='300' step='10' value='{{size}}'>
-	<input type='color' value='{{color}}'>
-	<input value='{{content}}'>
-	<input type='color' value='{{shadowColor}}'>
-	<input type='range' min='0' max='30' step='1' value='{{offsetX}}'>
-	<input type='range' min='0' max='30' step='1' value='{{offsetY}}'>
-	<input type='range' min='0' max='30' step='1' value='{{blur}}'>
 	<br>
+		<select value='{{color}}'>
+			<option value='crimson'>Red</option>
+			<option value='springgreen'>Green</option>
+			<option value='steelblue'>Blue</option>
+		</select>
+	<br>
+	<input value='{{content}}'>
+	<br>
+	{{#with shadow}}
+		<input type='color' value='{{color}}'>
+		<input type='range' min='0' max='30' step='1' value='{{offsetX}}'>
+		<input type='range' min='0' max='30' step='1' value='{{offsetY}}'>
+		<input type='range' min='0' max='30' step='1' value='{{blur}}'>
+	{{/with}}
+	<br>
+
+	<br>
+		<input type='range' min='0' max='300' step='1' value='{{x}}'>
+		<input type='range' min='0' max='300' step='1' value='{{y}}'>
+	<br>
+	{{console.log(color)}}
 	<div style='
+		transform: translate3d({{x}}px, {{y}}px, 0);
 		height: {{size}}px; width: {{size}}px;
 		background-color: {{color}};
-		text-shadow: {{shadowColor}} {{offsetX}}px {{offsetY}}px {{blur}}px;'
+		text-shadow: {{shadow.color}} {{shadow.offsetX}}px {{shadow.offsetY}}px {{shadow.blur}}px;'
 
 		id='frankendiv'>{{content}}</div>
 </script>
@@ -39,9 +55,16 @@ new Ractive({
 	el: document.body,
 	template: '#template',
 	data: {
+		x: 0, y: 0,
 		size: 100,
-		color: '#FFFFFF',
-		content: 'shadow me'
+		color: 'crimson',
+		content: 'shadow me',
+		shadow: {
+			color: 'black',
+			offsetX: 1,
+			offsetY: 2,
+			blur: 2
+		}
 	}
 })
 </script>

@@ -24,7 +24,7 @@ ractive.get('foo.bar')
 ```
 
 Data manipulation methods:
-* get (also takes hash)
+* get
 * set (also takes hash)
 * array
 	* push

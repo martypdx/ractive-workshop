@@ -7,7 +7,6 @@
 	<link rel="stylesheet" type="text/css" href="../../css/style.css">
 	<script src='../../js/ractive.js'></script>
 	<script src='../../data/angelnames.js'></script>
-	<script src='../../data/mydata.js'></script>
 	<style>
 	.box {
 		display: inline-block;
@@ -24,14 +23,11 @@
 
 <script id='template' type='text/ractive'>
 
-	{{#each mydata}}
-
-		<p>{{#name}}{{first}}{{last}}{{/}}</p>
-		<p>{{company}}</p>
-		<p>&gt;{{#tags}}<span>{{.}}, </span>
-		{{/}}</p>
+	{{#each angels}}
+		{{console.log('angels', this)}}
+		<p>{{this}}</p>
 	{{else}}
-	loading...
+		loading...
 	{{/each}}
 </script>
 
@@ -40,13 +36,10 @@ window.ractive = new Ractive({
 	el: document.body,
 	template: '#template',
 	data: {
-		mydata: null
+		angels: angelNames
 	}
 })
 
-setTimeout(function(){
-    ractive.set('mydata', mydata)
-}, 1000)
 
 </script>
 

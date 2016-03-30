@@ -14,21 +14,34 @@
 </head>
 <body>
 
+<style>
+p {
+	position: absolute;
+	left: 300px;
+}
+</style>
+
 <script id='template' type='text/ractive'>
-	<p intro-outro="fade:slow">I like to fade</p>
-	<p intro-outro="fly:slow">I like to fly</p>
-	<p intro-outro="slide:2500">I like to slide</p>
+	{{#items: i}}
+	<p intro-outro="
+		fly:{{ {
+			x: 200 * (i%2===0 ? 1 : -1),
+			y: 100
+		} }}">{{.}}</p>
+	{{/items}}
 </script>
 
 <script>
 var ractive = new Ractive({
 	el: document.body,
-	template: '#template'
+	template: '#template',
+	data: {
+		items: [1, 2, 3]
+	}
 })
 
-setTimeout(function(){
-	ractive.teardown()
-}, 2000)
+ractive.push('items', 79);
+
 </script>
 
 <body>

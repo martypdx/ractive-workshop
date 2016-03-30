@@ -8,18 +8,37 @@
 	<script src='../../js/ractive.js'></script>
 	<script src='https://code.jquery.com/jquery-2.1.1.min.js'></script>
 
+	<style>
+		li {
+			cursor: pointer;
+		}
+
+		div {
+			display: inline-block;;
+			border: 1px solid steelblue;
+			background: lightsteelblue;
+		}
+	</style>
 </head>
 <body>
 
+
 <script id='template' type='text/ractive'>
 
-{{#items}}
-{{name}} {{number}}<br>
-{{/}}
+{{#each items}}
+ <li on-click='animate("selected", this)'>{{name}} {{number}}
+{{/each}}
+
+{{#with selected}}
+	<div style='width: {{number}}px; background-color: {{color}}'>{{name}}</div>
+{{else}}
+	select a city
+{{/with}}
+
 </script>
 
 <script>
-var ractive = new Ractive({
+window.ractive = new Ractive({
 	el: document.body,
 	template: '#template',
 	data:{
@@ -28,18 +47,12 @@ var ractive = new Ractive({
 			last: 'smith'
 		},
 		items: [
-			{ name: 'portland', number: 100 },
-			{ name: 'seattle', number: 200 },
-			{ name: 'tokyo', number: 100 }
+			{ name: 'portland', number: 100, color: 'red' },
+			{ name: 'seattle', number: 200, color: 'blue' },
+			{ name: 'tokyo', number: 150, color: 'green' }
 		]
 	}
-})
-ractive.observe('items.*.name', function(newValue, oldValue, keypath, index){
-	console.log(keypath, 'changed from', oldValue, 'to', newValue, 'index was', index)
-}, { init: false })
-ractive.splice('items', 1, 1, { name: 'eugene' })
-ractive.animate('items.0', { name: 'pdx', number: 10000 })
-
+});
 
 </script>
 

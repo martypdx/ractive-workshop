@@ -14,7 +14,7 @@
 <div id='child'>I'm a child</div>
 </div>
 <script id='template' type='text/ractive'>
-	<h1>Hello Epicodus peps!</h1>
+	<h1>Hello Epicodus!</h1>
 	<p>Irony chillwave esse hella bespoke, wayfarers dolore keffiyeh eu biodiesel meh accusamus ethical Godard polaroid. Farm-to-table Pinterest ut, Pitchfork artisan qui ex tempor drinking vinegar. Vinyl mustache aliqua hella photo booth, voluptate meh Brooklyn kitsch flexitarian laboris quinoa. Salvia Godard street art, 8-bit ennui yr mustache synth. Skateboard consequat disrupt next level, placeat chillwave salvia meh pop-up tempor do Carles. Pug fanny pack consectetur, yr sapiente 8-bit trust fund tempor. Selfies High Life art party, master cleanse Godard et anim esse Thundercats irony craft beer nulla photo booth freegan.</p>
 	<p>
 </script>
@@ -23,7 +23,8 @@
 new Ractive({
 	el: '#container',
 	append: '#child',
-	template: '<p>hello hello</p>'
+	// template: '<p>hello hello</p>'
+	template: '#template'
 })
 </script>
 

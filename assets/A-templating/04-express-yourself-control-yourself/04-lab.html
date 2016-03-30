@@ -6,41 +6,45 @@
 
 	<link rel="stylesheet" type="text/css" href="../../css/style.css">
 	<script src='../../js/ractive.js'></script>
-	<script src='https://code.jquery.com/jquery-2.1.1.min.js'></script>
-	<script src='//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js'></script>
+	<script src='../../data/angelNames.js'></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/fuse.js/1.2.2/fuse.js'></script>
 
 </head>
 <body>
 
 <script id='template' type='text/ractive'>
-	{{#each _.sortBy(items) }}
-	  {{.}}<br>
-	{{/each}}
+    {{#items}}
 
-	{{#with parent}}
-		{{#each children}}
-			<p>{{.name}} is a child of {{../../name}}</p>
-		{{/each}}
-	{{/with}}
+    <li><input value="{{name}}"/>
+    {{/}}
 </script>
 
 <script>
-new Ractive({
-	el: document.body,
-	template: '#template',
-	data: {
-		items: [ 1,3,7,8,9,10,11,2,12,4,5,6 ],
-		_: _,
-		parent: {
-			name: 'bob',
-			children: [
-				{ name: 'sally' },
-				{ name: 'fred' },
-				{ name: 'lucy' }
-			]
-		}
-	}
-})
+var ractive = new Ractive({
+    el: document.body,
+    template: '#template',
+    data: {
+        items: [
+            { name: 'a' },
+            { name: 'b' },
+            { name: 'c' }
+        ]
+    },
+    oninit: function(){
+
+        this.observe('items.*.name', function(n, o, k, i){
+            console.log(k, 'changed from', o, 'to', n, 'index is', i);
+        }, { init: false });
+
+
+    },
+    onrender: function(){
+    	console.log(this.find('*'))
+    }
+});
+ractive.set('items.1.name', 'new name');
+
+console.log(ractive.toHTML());
 </script>
 
 <body>
